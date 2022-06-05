@@ -8,18 +8,21 @@ const btnBlack = document.createElement("button")
 const btnGrey = document.createElement("button")
 const btnRGB = document.createElement("button")
 const btnSize = document.createElement("button")
+const btnErase = document.createElement("button")
 
 //append buttons//
-buttonsContainer.appendChild(btnGrey);
-buttonsContainer.appendChild(btnBlack);
-buttonsContainer.appendChild(btnRGB);
-buttonsContainer.appendChild(btnSize);
+buttonsContainer.appendChild(btnGrey)
+buttonsContainer.appendChild(btnBlack)
+buttonsContainer.appendChild(btnRGB)
+buttonsContainer.appendChild(btnSize)
+buttonsContainer.appendChild(btnErase)
 
 //edit buttons//
 btnGrey.textContent = "Grey";
 btnBlack.textContent = "Black";
 btnRGB.textContent = "RGB";
 btnSize.textContent = "Size";
+btnErase.textContent = "Erase";
 
 //create grid//
 function createDivs(col, rows) {
@@ -36,10 +39,72 @@ function createDivs(col, rows) {
 let gridSizePrompt = prompt("Please enter the grid size");
 createDivs(gridSizePrompt, gridSizePrompt);
 
-const blokke = document.querySelector(".blokkies");
-const newPara = document.createElement("p");
-newPara.textContent = ("seeep");
-blokke.appendChild(newPara);
+//Black Button ACTIVATE//
+btnBlack.addEventListener('click', activateBlack);
+
+function activateBlack() {
+
+    const smallBoxes = document.querySelectorAll('.blokkies');
+    smallBoxes.forEach(makeBlack);
+
+function makeBlack(item) {
+    item.addEventListener('mouseover', () => {
+        item.style.removeProperty('background');
+        item.style.background = 'black';
+    })
+}
+}
+
+//Grey Button ACTIVATE//
+btnGrey.addEventListener('click', activateGrey);
+
+function activateGrey() {
+    const smallBoxes = document.querySelectorAll('.blokkies');
+    smallBoxes.forEach(makeGrey);
+
+function makeGrey(item) {
+    item.addEventListener('mouseover', () => {
+        item.style.removeProperty('background');
+        item.style.background = 'grey';
+    })
+}
+}
+
+//Erase Button ACTIVATE//
+btnErase.addEventListener('click', activateErase);
+
+function activateErase() {
+
+    const smallBoxes = document.querySelectorAll('.blokkies');
+    smallBoxes.forEach(erase);
+
+function erase(item) {
+    item.addEventListener('mouseover', () => {
+        item.style.removeProperty('background');
+    })
+}
+}
+
+//RGB Button ACTIVATE//
+btnRGB.addEventListener('click', activateRGB);
+
+function activateRGB() {
+
+    const smallBoxes = document.querySelectorAll('.blokkies');
+    smallBoxes.forEach(makeRandomColor);
+
+function makeRandomColor(item) {
+    item.addEventListener('mouseover', () => {
+        item.style.removeProperty('background');
+        let R = Math.floor(Math.random() * 255);
+        let G = Math.floor(Math.random() * 255);
+        let B = Math.floor(Math.random() * 255);
+        item.style.background = `rgb(${R}, ${G}, ${B})`
+    })
+}
+}
+
+
 
 
 
