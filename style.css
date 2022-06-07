@@ -1,6 +1,45 @@
+body {
+    margin: 75px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: -15px;
+    font-family: sans-serif;
+    color:rgba(146, 110, 20, 0.658);
+}
+
 .container {
     display: grid;
     height: 600px;
     width: 600px;
-    border: 1px solid black;
+    border: 1.7mm ridge goldenrod;
+     
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    width : 600px;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.indv-buttons {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 5rem;
+    transition: 100ms;
+}
+
+.indv-buttons:hover {
+    transform: scale(1.2);
 }

@@ -19,11 +19,16 @@ buttonsContainer.appendChild(btnErase)
 buttonsContainer.appendChild(btnClear)
 
 //edit buttons
-btnGrey.textContent = "Grey";
-btnBlack.textContent = "Black";
-btnRGB.textContent = "RGB";
-btnErase.textContent = "Erase";
-btnClear.textContent = "Clear";
+btnGrey.textContent = "✏️";
+btnGrey.classList.add("indv-buttons");
+btnBlack.textContent = "⬛";
+btnBlack.classList.add("indv-buttons");
+btnRGB.textContent = "🌈";
+btnRGB.classList.add("indv-buttons");
+btnErase.textContent = "🧹";
+btnErase.classList.add("indv-buttons");
+btnClear.textContent = "❌";
+btnClear.classList.add("indv-buttons");
 
 
 //get grid size, check if input is a number between 4 and 40
@@ -85,10 +90,10 @@ btnErase.addEventListener('click', activateErase);
 
 function activateErase() {
 
-    const smallBoxes = document.querySelectorAll('.blokkies');
+    const smallBoxes = document.querySelectorAll('.blokkies');                  //reference for below arrow function
     smallBoxes.forEach(erase);
 
-function erase(item) {
+function erase(item) {                                                        
     item.addEventListener('mouseover', () => {
         item.style.removeProperty('background');
     })
@@ -119,7 +124,7 @@ btnClear.addEventListener('click', activateClear);
 
 function activateClear() {
     const smallBoxes = document.querySelectorAll('.blokkies');
-    smallBoxes.forEach((item) => {                                           //woohoo working arrow function
+    smallBoxes.forEach((item) => {                                           //woohoo working arrow function, see above reference if you forget
         item.style.removeProperty('background')
     });
 }
