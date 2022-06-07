@@ -1,30 +1,32 @@
-//pointers//
+//pointers
 const gridContainer = document.querySelector(".container")
 const buttonsContainer = document.querySelector(".buttons")
 
 
-//create buttons//
+//create buttons
 const btnBlack = document.createElement("button")
 const btnGrey = document.createElement("button")
 const btnRGB = document.createElement("button")
-const btnSize = document.createElement("button")
 const btnErase = document.createElement("button")
+const btnClear = document.createElement("button")
 
-//append buttons//
+
+//append buttons
 buttonsContainer.appendChild(btnGrey)
 buttonsContainer.appendChild(btnBlack)
 buttonsContainer.appendChild(btnRGB)
-buttonsContainer.appendChild(btnSize)
 buttonsContainer.appendChild(btnErase)
+buttonsContainer.appendChild(btnClear)
 
-//edit buttons//
+//edit buttons
 btnGrey.textContent = "Grey";
 btnBlack.textContent = "Black";
 btnRGB.textContent = "RGB";
-btnSize.textContent = "Size";
 btnErase.textContent = "Erase";
+btnClear.textContent = "Clear";
 
-//get grid size, check if number between 4 and 40
+
+//get grid size, check if input is a number between 4 and 40
 
 let gridSize = prompt("Please choose the size of your grid between 4 and 40");
     
@@ -37,9 +39,9 @@ while (isNaN(gridSize) || gridSize > 40 || gridSize < 4) {
 function createDivs(col, rows) {
     for (let counter = 0; counter < (col * rows); counter++) {
         const gridDiv = document.createElement("div")                           //create a block
-        gridContainer.appendChild(gridDiv);                                     //append the block
+        gridContainer.appendChild(gridDiv);                                     //append a block
         gridDiv.classList.add("blokkies");        
-        gridContainer.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+        gridContainer.style.gridTemplateColumns = `repeat(${col}, 1fr)`;        //grid style?
         gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
        
     }
@@ -47,8 +49,7 @@ function createDivs(col, rows) {
 
 createDivs(gridSize, gridSize);
 
-
-//Black Button ACTIVATE//
+//Black Button ACTIVATE
 btnBlack.addEventListener('click', activateBlack);
 
 function activateBlack() {
@@ -64,7 +65,7 @@ function makeBlack(item) {
 }
 }
 
-//Grey Button ACTIVATE//
+//Grey Button ACTIVATE
 btnGrey.addEventListener('click', activateGrey);
 
 function activateGrey() {
@@ -79,7 +80,7 @@ function makeGrey(item) {
 }
 }
 
-//Erase Button ACTIVATE//
+//Erase Button ACTIVATE
 btnErase.addEventListener('click', activateErase);
 
 function activateErase() {
@@ -94,7 +95,7 @@ function erase(item) {
 }
 }
 
-//RGB Button ACTIVATE//
+//RGB Button ACTIVATE
 btnRGB.addEventListener('click', activateRGB);
 
 function activateRGB() {
@@ -113,6 +114,15 @@ function makeRandomColor(item) {
 }
 }
 
+//Clear Button ACTIVATE
+btnClear.addEventListener('click', activateClear);
+
+function activateClear() {
+    const smallBoxes = document.querySelectorAll('.blokkies');
+    smallBoxes.forEach((item) => {                                           //woohoo working arrow function
+        item.style.removeProperty('background')
+    });
+}
 
 
 
