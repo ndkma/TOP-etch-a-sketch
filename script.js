@@ -24,7 +24,16 @@ btnRGB.textContent = "RGB";
 btnSize.textContent = "Size";
 btnErase.textContent = "Erase";
 
-//create grid//
+//get grid size, check if number between 4 and 40
+
+let gridSize = prompt("Please choose the size of your grid between 4 and 40");
+    
+while (isNaN(gridSize) || gridSize > 40 || gridSize < 4) {
+    alert ("These parameters are not acceptable...");
+    gridSize = prompt("Please choose the size your grid between 4 and 40");
+}
+
+//create actual blocks
 function createDivs(col, rows) {
     for (let counter = 0; counter < (col * rows); counter++) {
         const gridDiv = document.createElement("div")                           //create a block
@@ -36,8 +45,8 @@ function createDivs(col, rows) {
     }
 }
 
-let gridSizePrompt = prompt("Please enter the grid size");
-createDivs(gridSizePrompt, gridSizePrompt);
+createDivs(gridSize, gridSize);
+
 
 //Black Button ACTIVATE//
 btnBlack.addEventListener('click', activateBlack);
